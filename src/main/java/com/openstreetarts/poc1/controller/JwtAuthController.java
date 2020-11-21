@@ -47,7 +47,7 @@ public class JwtAuthController {
 		return ResponseEntity.ok(jwtService.save(user));
 	}
 
-	@RequestMapping(value="/authenticate", method=RequestMethod.POST)
+	@RequestMapping(value = "/authenticate", method=RequestMethod.POST)
 	public ResponseEntity<?> postAuthenticate(@RequestBody JwtRequest request) throws Exception {
 		try {
 			authManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
@@ -59,5 +59,10 @@ public class JwtAuthController {
 		final UserDetails userDetails = jwtService.loadUserByUsername(request.getEmail());
 		final String token = jwtUtil.generateToken(userDetails);
 		return ResponseEntity.ok(new JwtResponse(token));
+	}
+
+	@RequestMapping(value = "/token_test", method=RequestMethod.POST)
+	public ResponseEntity<?> postTokenTest() {
+		return ResponseEntity.ok("Token valide.");
 	}
 }
