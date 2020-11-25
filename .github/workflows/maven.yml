@@ -1,3 +1,4 @@
+# Intégration continu, PgSQL, Java 11, Maven Build
 name: PostgreSQL + JDK 11 + Maven build
 
 on:
