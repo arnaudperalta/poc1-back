@@ -1,5 +1,7 @@
 package com.openstreetarts.poc1.model;
 
+import lombok.Data;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
+@Data
 @Table(name = "users")
 public class UserEntity {
 	
@@ -22,27 +25,5 @@ public class UserEntity {
 	@Column(nullable = false)
 	private String password;
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public String getPassword() {
-		return password;
-	}
 }
