@@ -23,11 +23,10 @@ public class UserService  {
 
 	public UserEntity register(UserDTO dto) throws OSA409Exception, OSA400Exception {
 		Optional<UserEntity> optionalUser = userRepository.findByEmail(dto.getEmail());
-		if (optionalUser.isEmpty())
+		if (optionalUser.isPresent())
 			throw new OSA409Exception("User already existing");
 
-		UserEntity user = optionalUser.get();
-		if (user.getPassword().length() < UserEntity.PSW_MIN_LENGTH)
+		if (dto.getPassword().length() < UserEntity.PSW_MIN_LENGTH)
 			throw new OSA400Exception("Password too short");
 		return jwtService.save(dto);
 	}
