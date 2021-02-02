@@ -24,8 +24,17 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private static final String[] ROUTES_WHITELIST = {
-		"/authenticate",
-		"/register"
+			// SWAGGER
+			"/v2/api-docs",
+			"/swagger-resources",
+			"/swagger-resources/**",
+			"/configuration/ui",
+			"/configuration/security",
+			"/swagger-ui.html",
+			"/webjars/**",
+			// API
+			"/api/authenticate",
+			"/api//register"
 	};
 
 	@Autowired
